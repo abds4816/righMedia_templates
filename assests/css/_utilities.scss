@@ -1,0 +1,140 @@
+* {
+	font-family: 'roboto', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+	text-decoration: none;
+	list-style-type: none;
+	transition: all .2s linear;
+}
+::selection {
+	background-color: $main-color;
+	color: $white;
+}
+
+html {
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+	scroll-padding-top: 6rem;
+
+	&::-webkit-scrollbar {
+		width: 1rem;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $main-color;
+	}
+}
+
+body {
+	background-color: $light-bg;
+}
+
+@mixin flex($alignItems) {
+	display: flex;
+	justify-content: center;
+	align-items: $alignItems;
+}
+
+@mixin row($gap) {
+	@include flex(center);
+	flex-wrap: wrap;
+	gap: $gap;
+}
+
+@mixin gird($val) {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+	gap: 2rem;
+}
+
+@mixin title($titleSize, $titleColor) {
+	display: block;
+	text-align: center;
+	font-size: $titleSize;
+	color: $titleColor;
+}
+
+@mixin title-text($titleSize, $marginBottom) {
+	color: $title-color;
+	font-size: $titleSize;
+	text-transform: capitalize;
+	margin-bottom: $marginBottom;
+}
+
+@mixin graph-text($graphSize, $lineHeight) {
+	font-size: $graphSize;
+	line-height: $lineHeight;
+	color: $light-color;
+	margin-bottom: 0;
+}
+
+@mixin box($borderRadius) {
+	@include flex(center);
+	flex-direction: column;
+	padding: 1rem 1.5rem;
+	background-color: $white;
+	margin-bottom: 1rem;
+	border-radius: $borderRadius;
+}
+
+// reusable classes
+
+section {
+	padding: 5rem 1rem;
+}
+
+.primary-btn {
+	margin-top: 1rem;
+	padding: 1rem 3rem;
+	display: inline-block;
+	border: $border;
+	border-radius: 0.3rem;
+	color: $main-color;
+	background: none;
+	cursor: pointer;
+	font-size: 1.2rem;
+	font-weight: 600;
+	position: relative;
+	overflow-x: hidden;
+
+	i {
+		opacity: 0;
+		transform: translateX(1.5rem);
+	}
+	span {
+		margin-right: -1rem;
+	}
+
+	&:hover {
+		i {
+			opacity: 1;
+			transform: translateX(0);
+		}
+		span {
+			margin-right: 0;
+		}
+	}
+}
+
+.sub-title {
+	@include title(1.2rem, $secondary-color);
+	font-weight: 400;
+}
+
+.title {
+	@include title(2rem, $title-color);
+	font-weight: 600;
+	margin: 1rem 0 3rem;
+}
+.link {
+	color: $main-color;
+	font-size: 0.9rem;
+	margin: 1rem 0 2rem;
+}
